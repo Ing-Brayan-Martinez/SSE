@@ -1,0 +1,21 @@
+<html lang="es">
+    <head>
+        <title>Test SSE</title>
+        <script>
+            const evtSource = new EventSource("http://192.168.0.103:80/account/128d8124-2311-4bc5-9f56-5ca1762fe387/and/a47b6261-69a7-4ca4-af32-e110b75591e5/total");
+            evtSource.onmessage = function(event) {
+                //create
+                const newElement = document.createElement("li");
+                newElement.textContent = "message: " + event.data;
+                //add to document
+                const eventList = document.getElementById("results");
+                eventList.appendChild(newElement);
+            }
+        </script>
+    </head>
+    <body>
+        <ul id="results">
+
+        </ul>
+    </body>
+</html>
